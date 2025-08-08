@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Un mensaje para ti 💌</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ffdde1, #fbd1d1);
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      padding: 60px 20px;
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 40px;
+      color: #d6336c;
+    }
+
+    .typing {
+      font-size: 22px;
+      color: #333;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #333;
+      width: 0;
+      margin: 20px auto;
+      animation: typing 6s steps(50, end) forwards, blink 0.7s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 12px 25px;
+      font-size: 18px;
+      border: none;
+      background-color: #ff6f91;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #ff4f7a;
+    }
+
+    #extraMessage {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #444;
+      display: none;
+    }
+
+    /* corazones */
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: url('https://cdn-icons-png.flaticon.com/512/833/833472.png') no-repeat center center / cover;
+      animation: floatUp 6s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        bottom: -20px;
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        bottom: 100%;
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+    Tu navegador no soporta el audio.
+  </audio>
+
+  <div class="container">
+    <h1>Para ti, con cariño ❤️</h1>
+    <div class="typing">Hay personas que llegan y hacen todo más bonito... tú eres una de ellas 🥰</div>
+    <button onclick="mostrarMensaje()">Haz clic aquí</button>
+    <div id="extraMessage">Gracias por existir... 💕 Nunca olvides lo especial que eres 🌟</div>
+  </div>
+
+  <!-- generar corazones aleatorios -->
+  <script>
+    function crearCorazon() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }
+
+    setInterval(crearCorazon, 300);
+
+    function mostrarMensaje() {
+      document.getElementById("extraMessage").style.display = "block";
+    }
+  </script>
+</body>
+</html>
